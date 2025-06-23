@@ -1,5 +1,5 @@
 //Obtenemos el paquete dotenv
-require('dotenv').config({ path: './.env' });
+require('dotenv').config();
 const { Server } = require('./models');
 
 const server = new Server();
