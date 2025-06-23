@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
-const { productPost, productPaginate, productPut, productById, productDelete, productByName, productUpdateImage } = require('../controllers');
+const { productPost, productPaginate, productPut, productById, productDelete, productByName, productUpdateImage, wildcard } = require('../controllers');
 
 const { validateFields, validateJWT, hasRole } = require('../middlewares');
 const { existProductName, existCategoryById, existProductById, existProductDeleted } = require('../helpers/db-validators');
@@ -84,5 +84,7 @@ router.delete('/:id', [
     validateFields
     ],
     productDelete);
+
+router.all('*splat', wildcard);
 
 module.exports = router;

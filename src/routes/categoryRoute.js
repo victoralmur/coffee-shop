@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
-const { categoryPaginate, categoryPost, categoryById, categoryPut, categoryDelete,  } = require('../controllers');
+const { categoryPaginate, categoryPost, categoryById, categoryPut, categoryDelete, wildcard } = require('../controllers');
 
 const { validateFields, validateJWT, hasRole } = require('../middlewares');
 const { existCategoryName, existCategoryById, existCategoryDeleted } = require('../helpers/db-validators');
@@ -57,5 +57,7 @@ router.delete('/:id', [
     validateFields
     ],
     categoryDelete);
+
+router.all('*splat', wildcard);
 
 module.exports = router;

@@ -1,14 +1,11 @@
 const { Router } = require('express');
 
-const { getTypeCode } = require('../services/typicodeService');
-
-const { validateFields, validateJWT, hasRole } = require('../middlewares');
+const { wildcard, getTypicode } = require('../controllers');
 
 const router = Router();
 
-router.get('/users', [
-    
-    ],
-    getTypeCode);
+router.get('/users', getTypicode);
+
+router.all('*splat', wildcard);
 
 module.exports = router;

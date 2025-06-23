@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
-const { login, refreshJWT } = require('../controllers');
+const { login, refreshJWT, wildcard } = require('../controllers');
 
 const { validateFields } = require('../middlewares');
 
@@ -15,5 +15,7 @@ router.post('/login', [
     login);
 
 router.get('/refresh-token', refreshJWT);
+
+router.all('*splat', wildcard);
 
 module.exports = router;
